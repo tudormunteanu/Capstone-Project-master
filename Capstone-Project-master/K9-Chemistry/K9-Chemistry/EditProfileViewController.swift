@@ -11,6 +11,8 @@ import UIKit
 class EditProfileViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var phoneField: UITextField!
     
     var profile: Profile?
     
@@ -27,8 +29,8 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate, UITableV
         tableView.reloadData()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.nameField.delegate = self
-        self.phoneField.delegate = self
+        //self.nameField.delegate = self
+        //self.phoneField.delegate = self
         
         if let profile = self.profile {
             if let name = profile.name {
@@ -115,9 +117,9 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate, UITableV
     
     func textFieldDidEndEditing(textField: UITextField) {
         if textField == self.nameField {
-            self.contact?.name = textField.text
+            self.profile?.name = textField.text
         } else if textField == self.phoneField {
-            self.contact?.phone = textField.text
+            self.profile?.phone = textField.text
         }
     }
 

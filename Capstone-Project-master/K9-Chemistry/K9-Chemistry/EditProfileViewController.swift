@@ -11,8 +11,8 @@ import UIKit
 class EditProfileViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var phoneField: UITextField!
+    //@IBOutlet weak var nameField: UITextField!
+    //@IBOutlet weak var phoneField: UITextField!
     
     var profile: Profile?
     
@@ -29,15 +29,12 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate, UITableV
         tableView.reloadData()
         // Do any additional setup after loading the view, typically from a nib.
         
-        //self.nameField.delegate = self
-        //self.phoneField.delegate = self
-        
         if let profile = self.profile {
             if let name = profile.name {
-                self.nameField.text = name
+                nameField.text = name
             }
             if let phone = profile.phone {
-                self.phoneField.text = phone
+                phoneField.text = phone
             }
         }
         
@@ -74,6 +71,7 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate, UITableV
                 let nameField = UITextField(frame: CGRect(x: 0, y: 8, width: 100, height: 30))
                 nameField.placeholder = "Name"
                 cell.contentView.addSubview(nameField)
+                nameField.delegate = self
             } else if indexPath.row == 1 {
                 let usernameField = UITextField(frame: CGRect(x: 0, y: 8, width: 100, height: 30))
                 usernameField.placeholder = "Username"
@@ -96,6 +94,7 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate, UITableV
                 let phoneField = UITextField(frame: CGRect(x: 0, y: 8, width: 100, height: 30))
                 phoneField.placeholder = "Phone"
                 cell.contentView.addSubview(phoneField)
+                phoneField.delegate = self
             } else if indexPath.row == 2 {
                 let genderField = UITextField(frame: CGRect(x: 0, y: 8, width: 100, height: 30))
                 genderField.placeholder = "Gender"

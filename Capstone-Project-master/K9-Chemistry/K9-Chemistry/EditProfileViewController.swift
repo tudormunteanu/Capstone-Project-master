@@ -11,14 +11,23 @@ import UIKit
 class EditProfileViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    //@IBOutlet weak var nameField: UITextField!
-    //@IBOutlet weak var phoneField: UITextField!
     
     var profile: Profile?
+    
+    let nameField = UITextField(frame: CGRect(x: 0, y: 8, width: 100, height: 30))
+    let usernameField = UITextField(frame: CGRect(x: 0, y: 8, width: 100, height: 30))
+    let websiteField = UITextField(frame: CGRect(x: 0, y: 8, width: 100, height: 30))
+    let aboutMeField = UITextField(frame: CGRect(x: 0, y: 8, width: 100, height: 30))
+    let emailField = UITextField(frame: CGRect(x: 0, y: 8, width: 100, height: 30))
+    let phoneField = UITextField(frame: CGRect(x: 0, y: 8, width: 100, height: 30))
+    let genderField = UITextField(frame: CGRect(x: 0, y: 8, width: 100, height: 30))
+    
     
     override func viewDidAppear(animated: Bool) {
         
         super.viewDidAppear(animated)
+        println(self.profile)
+        println(self.profile?.name)
     }
     
     override func viewDidLoad() {
@@ -33,8 +42,23 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate, UITableV
             if let name = profile.name {
                 nameField.text = name
             }
+            if let username = profile.username {
+                usernameField.text = username
+            }
+            if let website = profile.website {
+                websiteField.text = website
+            }
+            if let aboutMe = profile.aboutMe {
+                aboutMeField.text = aboutMe
+            }
+            if let email = profile.email {
+                emailField.text = email
+            }
             if let phone = profile.phone {
                 phoneField.text = phone
+            }
+            if let gender = profile.gender {
+                genderField.text = gender
             }
         }
         
@@ -68,37 +92,35 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate, UITableV
         if indexPath.section == 0 {
             
             if indexPath.row == 0 {
-                let nameField = UITextField(frame: CGRect(x: 0, y: 8, width: 100, height: 30))
                 nameField.placeholder = "Name"
                 cell.contentView.addSubview(nameField)
                 nameField.delegate = self
             } else if indexPath.row == 1 {
-                let usernameField = UITextField(frame: CGRect(x: 0, y: 8, width: 100, height: 30))
                 usernameField.placeholder = "Username"
                 cell.contentView.addSubview(usernameField)
+                usernameField.delegate = self
             } else if indexPath.row == 2 {
-                let websiteField = UITextField(frame: CGRect(x: 0, y: 8, width: 100, height: 30))
                 websiteField.placeholder = "Website"
                 cell.contentView.addSubview(websiteField)
+                websiteField.delegate = self
             } else if indexPath.row == 3 {
-                let aboutMeField = UITextField(frame: CGRect(x: 0, y: 8, width: 100, height: 30))
                 aboutMeField.placeholder = "About Me"
                 cell.contentView.addSubview(aboutMeField)
+                aboutMeField.delegate = self
             }
         } else {
             if indexPath.row == 0 {
-                let emailField = UITextField(frame: CGRect(x: 0, y: 8, width: 100, height: 30))
                 emailField.placeholder = "Email"
                 cell.contentView.addSubview(emailField)
+                emailField.delegate = self
             } else if indexPath.row == 1 {
-                let phoneField = UITextField(frame: CGRect(x: 0, y: 8, width: 100, height: 30))
                 phoneField.placeholder = "Phone"
                 cell.contentView.addSubview(phoneField)
                 phoneField.delegate = self
             } else if indexPath.row == 2 {
-                let genderField = UITextField(frame: CGRect(x: 0, y: 8, width: 100, height: 30))
                 genderField.placeholder = "Gender"
                 cell.contentView.addSubview(genderField)
+                genderField.delegate = self
             }
             
         }
@@ -119,7 +141,24 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate, UITableV
             self.profile?.name = textField.text
         } else if textField == self.phoneField {
             self.profile?.phone = textField.text
+        } else if textField == self.usernameField {
+            self.profile?.username = textField.text
+        } else if textField == self.websiteField {
+            self.profile?.website == textField.text
+        } else if textField == self.aboutMeField {
+            self.profile?.aboutMe == textField.text
+        } else if textField == self.emailField {
+            self.profile?.email == textField.text
+        } else {
+            self.profile?.gender == textField.text
         }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //let indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)!
+        //let profile = self.profile[indexPath.row]
+        var destination = segue.destinationViewController as! FifthViewController
+        destination.profile1 = profile
     }
 
 }

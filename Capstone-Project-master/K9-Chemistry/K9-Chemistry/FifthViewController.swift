@@ -67,6 +67,10 @@ class FifthViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //func loadView() {
+        
+    //}
+    
      override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         //let indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)!
         //let profile = self.profile[indexPath.row]

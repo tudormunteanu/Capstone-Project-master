@@ -154,11 +154,12 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate, UITableV
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        //let indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)!
-        //let profile = self.profile[indexPath.row]
-        var destination = segue.destinationViewController as! FifthViewController
-        destination.profile1 = profile
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        //let indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)!
+//        //let profile = self.profile[indexPath.row]
+//        var destination = segue.destinationViewController as! FifthViewController
+//        destination.profile1 = profile
+//    }
+
 
 }

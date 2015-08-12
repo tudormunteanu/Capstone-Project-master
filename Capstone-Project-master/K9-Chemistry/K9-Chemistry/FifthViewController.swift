@@ -10,9 +10,7 @@ import UIKit
 
 class FifthViewController: UIViewController {
     
-    var profile1: Profile?
-    
-    let shon3005 = Profile(name: "Shaun Chua", phone: "(347) 302-0851", username: "shon3005", gender: "Male", email: "shaun.chua@nyu.edu", aboutMe: "LOL", website: "hello.me")
+    var shon3005 = Profile(name: "Shaun Chua", phone: "(347) 302-0851", username: "shon3005", gender: "Male", email: "shaun.chua@nyu.edu", aboutMe: "LOL", website: "hello.me")
     
     let nameLabel = UILabel(frame: CGRect(x: 8, y: 200, width: 100, height: 30))
     //let usernameLabel = UILabel(x:, y:, width:, height:)
@@ -22,9 +20,11 @@ class FifthViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         
         super.viewDidAppear(animated)
-        println(self.profile1)
-        println(self.profile1?.name)
+        println(self.shon3005)
+        println(self.shon3005.name)
+        nameLabel.text = shon3005.name
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,11 +53,11 @@ class FifthViewController: UIViewController {
                 //aboutMeLabel.text = aboutMe
             //}
         
-        let name = self.profile1?.name
+        let name = shon3005.name
         nameLabel.text = name
-        let website = self.profile1?.website
+        let website = shon3005.website
         websiteLabel.text = website
-        let aboutMe = self.profile1?.aboutMe
+        let aboutMe = shon3005.aboutMe
         aboutMeLabel.text = aboutMe
         
     }
